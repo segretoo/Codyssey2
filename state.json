@@ -121,6 +121,12 @@
       "total_questions": 3,
       "correct_count": 0.5,
       "score": 16
+    },
+    {
+      "datetime": "2026-07-29 23:09:09",
+      "total_questions": 1,
+      "correct_count": 0,
+      "score": 0
     }
   ]
 }

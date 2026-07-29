@@ -127,6 +127,26 @@ class QuizGame:
 
             return num
 
+    def _get_choice_answer(self, max_count=4):
+        """퀴즈 추가 시 정답 번호(1~max_count) 입력을 검증하며 받는다."""
+        while True:
+            raw = input(f"정답 번호 (1-{max_count}): ").strip()
+
+            if raw == "":
+                print("⚠ 입력이 비어 있습니다. 정답 번호를 입력하세요.")
+                continue
+
+            if not raw.isdigit():
+                print("⚠ 숫자를 입력해야 합니다. 다시 입력하세요.")
+                continue
+
+            num = int(raw)
+            if not (1 <= num <= max_count):
+                print(f"⚠ 1부터 {max_count} 사이의 번호를 입력하세요.")
+                continue
+
+            return num
+
     def add_quiz(self):
         """새로운 퀴즈를 입력받아 목록에 추가"""
         print("\n📌 새로운 퀴즈를 추가합니다.\n")
@@ -138,12 +158,7 @@ class QuizGame:
             choice = input(f"선택지 {i}: ")
             choices.append(choice)
 
-        while True:
-            answer_input = input("정답 번호 (1-4): ").strip()
-            if answer_input.isdigit() and 1 <= int(answer_input) <= 4:
-                answer = int(answer_input)
-                break
-            print("⚠ 1부터 4 사이의 숫자를 입력하세요.")
+        answer = self._get_choice_answer()
 
         hint_input = input("힌트를 입력하세요 (없으면 Enter): ").strip()
         hint = hint_input if hint_input != "" else None
