@@ -32,11 +32,22 @@ class QuizGame:
             quiz.display()
             print()
 
+            hint_used = False
+            if quiz.has_hint():
+                see_hint = input("힌트를 보시겠습니까? (y/n): ").strip().lower()
+                if see_hint == "y":
+                    print(f"💡 힌트: {quiz.hint}")
+                    hint_used = True
+
             user_answer = self._get_answer_input()
 
             if quiz.check_answer(user_answer):
-                print("✅ 정답입니다!\n")
-                correct_count += 1
+                if hint_used:
+                    print("✅ 정답입니다! (힌트 사용으로 0.5문제 처리)\n")
+                    correct_count += 0.5
+                else:
+                    print("✅ 정답입니다!\n")
+                    correct_count += 1
             else:
                 print(f"❌ 오답입니다. (정답: {quiz.answer}번)\n")
 
@@ -110,7 +121,10 @@ class QuizGame:
                 break
             print("⚠ 1부터 4 사이의 숫자를 입력하세요.")
 
-        new_quiz = Quiz(question, choices, answer)
+        hint_input = input("힌트를 입력하세요 (없으면 Enter): ").strip()
+        hint = hint_input if hint_input != "" else None
+
+        new_quiz = Quiz(question, choices, answer, hint=hint)
         self.quizzes.append(new_quiz)
         print("\n✅ 퀴즈가 추가되었습니다!\n")
 

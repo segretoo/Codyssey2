@@ -8,7 +8,8 @@
         "Bjarne Stroustrup",
         "James Gosling"
       ],
-      "answer": 1
+      "answer": 1,
+      "hint": "네덜란드 출신 프로그래머입니다."
     },
     {
       "question": "HTML에서 하이퍼링크를 만드는 태그는?",
@@ -18,7 +19,8 @@
         "<a>",
         "<url>"
       ],
-      "answer": 3
+      "answer": 3,
+      "hint": "영어로 anchor(닻)의 줄임말입니다."
     },
     {
       "question": "Git에서 변경 이력을 저장하는 명령어는?",
@@ -28,7 +30,8 @@
         "git record",
         "git log"
       ],
-      "answer": 2
+      "answer": 2,
+      "hint": null
     },
     {
       "question": "웹사이트의 디자인(스타일)을 담당하는 언어는?",
@@ -38,7 +41,8 @@
         "CSS",
         "SQL"
       ],
-      "answer": 3
+      "answer": 3,
+      "hint": null
     },
     {
       "question": "다음 중 파이썬의 기본 자료형이 아닌 것은?",
@@ -48,8 +52,31 @@
         "dict",
         "array"
       ],
-      "answer": 4
+      "answer": 4,
+      "hint": null
+    },
+    {
+      "question": "JavaScript 코드를 실행할 수 있는 대표적인 웹 브라우저 엔진은?",
+      "choices": [
+        "V8",
+        "MySQL",
+        "Photoshop",
+        "Excel"
+      ],
+      "answer": 1,
+      "hint": null
+    },
+    {
+      "question": "대한민국의 수도는?",
+      "choices": [
+        "부산",
+        "서울",
+        "대구",
+        "인천"
+      ],
+      "answer": 2,
+      "hint": "조선시대부터 도읍이었던 도시입니다"
     }
   ],
-  "best_score": null
+  "best_score": 100
 }
