@@ -53,7 +53,7 @@ quiz_game/
 ├── data_manager.py     # state.json 저장/불러오기, 손상 시 기본 데이터 복구
 ├── state.json           # 퀴즈 데이터, 최고 점수, 게임 기록 저장 파일
 ├── docs/
-│   └── screenshots/     # 실행 화면 및 개발 환경 캡처
+│   └── screenshots/     # 실행 화면, 개발 환경, 예외처리, Git 이력 캡처
 ├── .gitignore
 └── README.md
 ```
@@ -115,6 +115,18 @@ quiz_game/
 
 ![history](docs/screenshots/history.png)
 
+### 공통 입력 예외 처리 (빈 입력 / 숫자 변환 실패 / 범위 밖 입력)
+
+![input_validation](docs/screenshots/input_validation.png)
+
+### 개발 환경 버전 확인
+
+![version](docs/screenshots/version.png)
+
+### Git 커밋 이력 (기능 단위 커밋, 브랜치 병합 포함)
+
+![git_log](docs/screenshots/git_log.png)
+
 ## 학습 내용 정리
 
 ### Python 기초
@@ -133,10 +145,10 @@ quiz_game/
   모르고 "조건을 만족할 때까지" 반복해야 하는 경우(사용자가 올바른 값을 입력할
   때까지 재입력받기)에는 `while`을 사용했습니다.
 - **함수(매개변수/반환값)**: `print_menu()`, `get_menu_choice()`,
-  `_get_answer_input()`, `_get_question_count()`, `_get_delete_index()`처럼
-  반복되는 입력 검증 로직을 함수로 분리해 재사용했고, `check_answer(user_answer)`
-  처럼 매개변수를 받아 처리한 뒤 `True/False`를 반환값으로 돌려주는 방식을
-  활용했습니다.
+  `_get_answer_input()`, `_get_question_count()`, `_get_delete_index()`,
+  `_get_choice_answer()`처럼 반복되는 입력 검증 로직을 함수로 분리해 재사용했고,
+  `check_answer(user_answer)`처럼 매개변수를 받아 처리한 뒤 `True/False`를
+  반환값으로 돌려주는 방식을 활용했습니다.
 
 ### 클래스와 객체
 
