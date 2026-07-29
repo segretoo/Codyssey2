@@ -10,26 +10,27 @@ def print_menu():
     print("2. 퀴즈 추가")
     print("3. 퀴즈 목록")
     print("4. 점수 확인")
-    print("5. 종료")
+    print("5. 퀴즈 삭제")
+    print("6. 종료")
     print("=" * 45)
 
 
 def get_menu_choice():
-    """1~5 사이의 숫자만 허용하고, 아니면 재입력 받기"""
+    """1~6 사이의 숫자만 허용하고, 아니면 재입력 받기"""
     while True:
         choice = input("선택: ").strip()
 
         if choice == "":
-            print("⚠ 입력이 비어 있습니다. 1-5 사이의 숫자를 입력하세요.\n")
+            print("⚠ 입력이 비어 있습니다. 1-6 사이의 숫자를 입력하세요.\n")
             continue
 
         if not choice.isdigit():
-            print("⚠ 잘못된 입력입니다. 1-5 사이의 숫자를 입력하세요.\n")
+            print("⚠ 잘못된 입력입니다. 1-6 사이의 숫자를 입력하세요.\n")
             continue
 
         num = int(choice)
-        if not (1 <= num <= 5):
-            print("⚠ 잘못된 입력입니다. 1-5 사이의 숫자를 입력하세요.\n")
+        if not (1 <= num <= 6):
+            print("⚠ 잘못된 입력입니다. 1-6 사이의 숫자를 입력하세요.\n")
             continue
 
         return num
@@ -55,6 +56,8 @@ def main():
             elif choice == 4:
                 game.show_best_score()
             elif choice == 5:
+                game.delete_quiz()
+            elif choice == 6:
                 save_state(game.quizzes, game.best_score)
                 print("\n💾 저장 완료! 게임을 종료합니다. 안녕히 가세요 👋\n")
                 break

@@ -140,6 +140,39 @@ class QuizGame:
                 print(f"[{idx}] {quiz.question}")
 
         print("-" * 45)
+    
+    def delete_quiz(self):
+        """등록된 퀴즈 중 하나를 선택해서 삭제"""
+        if not self.quizzes:
+            print("\n⚠ 삭제할 퀴즈가 없습니다.\n")
+            return
+
+        self.list_quizzes()
+
+        index = self._get_delete_index(len(self.quizzes))
+        removed = self.quizzes.pop(index - 1)
+
+        print(f"\n🗑 삭제되었습니다: {removed.question}\n")
+
+    def _get_delete_index(self, max_count):
+        """삭제할 퀴즈 번호(1 ~ 전체 개수)를 입력받는다."""
+        while True:
+            raw = input(f"삭제할 퀴즈 번호를 입력하세요 (1-{max_count}): ").strip()
+
+            if raw == "":
+                print("⚠ 입력이 비어 있습니다. 숫자를 입력하세요.")
+                continue
+
+            if not raw.isdigit():
+                print("⚠ 숫자를 입력해야 합니다. 다시 입력하세요.")
+                continue
+
+            num = int(raw)
+            if not (1 <= num <= max_count):
+                print(f"⚠ 1부터 {max_count} 사이의 숫자를 입력하세요.")
+                continue
+
+            return num
 
     def show_best_score(self):
         """저장된 최고 점수를 출력. 아직 안 풀었으면 안내 메시지."""
