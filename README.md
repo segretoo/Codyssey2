@@ -107,6 +107,10 @@ quiz_game/
 
 ![add_quiz](docs/screenshots/add_quiz.png)
 
+### 퀴즈 목록
+
+![list](docs/screenshots/list.png)
+
 ### 점수 확인
 
 ![score](docs/screenshots/score.png)
@@ -126,6 +130,12 @@ quiz_game/
 ### Git 커밋 이력 (기능 단위 커밋, 브랜치 병합 포함)
 
 ![git_log](docs/screenshots/git_log.png)
+
+### Git 저장소 복제(clone) 및 pull 실습
+
+별도 폴더에 저장소를 clone하여 README를 수정 후 push하고, 원래 작업 폴더에서
+pull로 그 변경사항이 정상적으로 반영되는 것까지 확인한 전체 과정입니다.
+![pull](docs/screenshots/pull.png)
 
 ## 학습 내용 정리
 
@@ -197,10 +207,10 @@ quiz_game/
   `git merge feature/이름`으로 병합했습니다. (예: `feature/readme`,
   `feature/refactor-quiz`, `feature/random-order`, `feature/select-count`,
   `feature/hint`, `feature/delete-quiz`, `feature/score-history`)
-- **clone/pull 실습에서 무엇을 확인했는지**: 별도 폴더(`quiz_game_clone`)에
-  저장소를 `git clone`으로 복제한 뒤, 그 폴더에서 README를 수정하고
-  `git push`로 원격 저장소에 반영했습니다. 이후 원래 작업 폴더에서
-  `git pull`을 실행해 그 변경사항이 정상적으로 반영되는 것을 확인했습니다.
+- **clone/pull 실습에서 무엇을 확인했는지**: 별도 폴더에 저장소를 `git clone`으로
+  복제한 뒤, 그 폴더에서 README를 수정하고 `git push`로 원격 저장소에 반영했습니다.
+  이후 원래 작업 폴더에서 `git pull`을 실행해 "Fast-forward"로 그 변경사항이
+  정상적으로 반영되는 것을 확인했습니다. (`docs/screenshots/pull.png` 참고)
 
 ## 개발 환경
 
@@ -212,5 +222,3 @@ quiz_game/
 ## GitHub 저장소
 
 https://github.com/segretoo/Codyssey2.git
-
-> clone/pull 실습 확인용 문구입니다.
