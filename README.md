@@ -212,3 +212,5 @@ quiz_game/
 ## GitHub 저장소
 
 https://github.com/segretoo/Codyssey2.git
+
+> clone/pull 실습 확인용 문구입니다.
