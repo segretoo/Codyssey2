@@ -106,7 +106,7 @@ quiz_game/
   행동(출력, 채점)을 하나로 묶었고, `QuizGame`은 "게임 진행"이라는 별개의 책임
   (메뉴별 동작, 점수 관리)을 묶었습니다. 이렇게 역할을 나누면 한쪽을 수정해도
   다른 쪽에 영향을 덜 주고, 코드를 이해하기도 쉬워집니다.
-- ****init**과 self의 역할**: `__init__`은 객체가 생성되는 시점에 필요한 초기값을
+- \***\*init**과 self의 역할\*\*: `__init__`은 객체가 생성되는 시점에 필요한 초기값을
   설정하는 메서드입니다. `self`는 "지금 만들어지고 있는 이 객체 자기 자신"을
   가리키는 참조로, `self.question`처럼 써서 그 객체만의 데이터를 저장하고
   꺼내 쓸 수 있게 해줍니다.
@@ -145,15 +145,18 @@ quiz_game/
   기능별 브랜치를 만들어 작업한 뒤, 작업이 끝나면 `main`으로 돌아와
   `git merge feature/이름`으로 병합했습니다. (예: `feature/readme`,
   `feature/refactor-quiz`)
-- **clone/pull 실습에서 무엇을 확인했는지**: (실습 진행 후 작성 예정)
+- **clone/pull 실습에서 무엇을 확인했는지**: 별도 폴더(`quiz_game_clone`)에
+  저장소를 `git clone`으로 복제한 뒤, 그 폴더에서 README를 수정하고
+  `git push`로 원격 저장소에 반영했습니다. 이후 원래 작업 폴더에서
+  `git pull`을 실행해 그 변경사항이 정상적으로 반영되는 것을 확인했습니다.
 
 ## 개발 환경
 
 - OS: Windows (Git Bash / MINGW64)
-- Python: (버전은 `python --version` 결과로 채워주세요)
-- Git: (버전은 `git --version` 결과로 채워주세요)
-- Editor: (사용하신 에디터 명)
+- Python: 3.14.6
+- Git: 2.47.0.windows.2
+- Editor: VS Code 1.130.0
 
 ## GitHub 저장소
 
-(저장소 URL을 여기에 적어주세요)
+https://github.com/segretoo/Codyssey2.git
