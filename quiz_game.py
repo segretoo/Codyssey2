@@ -45,8 +45,25 @@ class QuizGame:
         print("=" * 45)
 
     def _get_answer_input(self):
-        """정답 번호(1~4) 입력을 검증하며 받는다. (다음 단계에서 채울 예정)"""
-        return input("정답 입력: ")
+        """정답 번호(1~4) 입력을 검증하며 받는다.
+        공백 제거, 숫자 변환 실패, 범위 밖, 빈 입력을 모두 처리."""
+        while True:
+            raw = input("정답 입력: ").strip()
+
+            if raw == "":
+                print("⚠ 입력이 비어 있습니다. 정답 번호를 입력하세요.")
+                continue
+
+            if not raw.isdigit():
+                print("⚠ 숫자를 입력해야 합니다. 다시 입력하세요.")
+                continue
+
+            num = int(raw)
+            if not (1 <= num <= 4):
+                print("⚠ 1부터 4 사이의 번호를 입력하세요.")
+                continue
+
+            return num
 
     def add_quiz(self):
         """새로운 퀴즈를 입력받아 목록에 추가"""
