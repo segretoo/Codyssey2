@@ -1,4 +1,5 @@
 from quiz import Quiz
+import random
 
 
 class QuizGame:
@@ -19,7 +20,9 @@ class QuizGame:
 
         print(f"\n📝 퀴즈를 시작합니다! (총 {total}문제)\n")
 
-        for idx, quiz in enumerate(self.quizzes, start=1):
+        shuffled_quizzes = random.sample(self.quizzes, total)
+
+        for idx, quiz in enumerate(shuffled_quizzes, start=1):
             print("-" * 40)
             print(f"[문제 {idx}]")
             quiz.display()
