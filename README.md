@@ -9,7 +9,7 @@ Python 기본 문법과 객체지향(클래스), JSON을 이용한 데이터 저
 
 ## 퀴즈 주제 선정 이유
 
-[IT 및 비즈니스를 공부하는 학습자로서, 개발 기초 상식과 일반 상식을 함께 복습할 수 있는 퀴즈를 직접 만들어보고 싶어 이 주제를 선정했습니다.]
+IT 및 비즈니스를 공부하는 학습자로서, 개발 기초 상식과 일반 상식을 함께 복습할 수 있는 퀴즈를 직접 만들어보고 싶어 이 주제를 선정했습니다.
 
 ## 실행 방법
 
@@ -26,20 +26,19 @@ python main.py
 - **점수 확인**: 지금까지의 최고 점수를 확인합니다.
 
 ## 파일 구조
-
-\`\`\`
+```
 quiz_game/
-├── main.py # 실행 진입점, 메뉴 루프
-├── quiz.py # Quiz 클래스 (문제 1개의 데이터와 채점 로직)
-├── quiz_game.py # QuizGame 클래스 (풀기/추가/목록/점수 로직)
-├── data_manager.py # state.json 저장/불러오기
+├── main.py            # 실행 진입점, 메뉴 루프
+├── quiz.py             # Quiz 클래스 (문제 1개의 데이터와 채점 로직)
+├── quiz_game.py        # QuizGame 클래스 (풀기/추가/목록/점수 로직)
+├── data_manager.py     # state.json 저장/불러오기
 ├── data/
-│ └── state.json # 퀴즈 데이터와 최고 점수 저장 파일
+│   └── state.json       # 퀴즈 데이터와 최고 점수 저장 파일
 ├── docs/
-│ └── screenshots/ # 실행 화면 캡처
+│   └── screenshots/     # 실행 화면 캡처
 ├── .gitignore
 └── README.md
-\`\`\`
+```
 
 ## 데이터 파일 설명 (state.json)
 
