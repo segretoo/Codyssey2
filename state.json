@@ -65,18 +65,27 @@
       ],
       "answer": 1,
       "hint": null
-    },
-    {
-      "question": "대한민국의 수도는?",
-      "choices": [
-        "부산",
-        "서울",
-        "대구",
-        "인천"
-      ],
-      "answer": 2,
-      "hint": "조선시대부터 도읍이었던 도시입니다"
     }
   ],
-  "best_score": 100
+  "best_score": 100,
+  "history": [
+    {
+      "datetime": "2026-07-29 22:52:32",
+      "total_questions": 2,
+      "correct_count": 2,
+      "score": 100
+    },
+    {
+      "datetime": "2026-07-29 22:52:36",
+      "total_questions": 3,
+      "correct_count": 1,
+      "score": 33
+    },
+    {
+      "datetime": "2026-07-29 22:52:39",
+      "total_questions": 2,
+      "correct_count": 0,
+      "score": 0
+    }
+  ]
 }

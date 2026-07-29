@@ -1,13 +1,15 @@
 from quiz import Quiz
 import random
+from datetime import datetime
 
 
 class QuizGame:
     """퀴즈 게임 전체를 관리하는 클래스"""
 
-    def __init__(self, quizzes, best_score=None):
+    def __init__(self, quizzes, best_score=None, history=None):
         self.quizzes = quizzes        # Quiz 객체 리스트
         self.best_score = best_score  # 아직 안 풀었으면 None
+        self.history = history if history is not None else []  # 게임 기록 리스트
 
     def play(self):
         """등록된 퀴즈 중 사용자가 선택한 문제 수만큼 풀고 점수를 계산"""
@@ -61,6 +63,28 @@ class QuizGame:
             print("🎉 새로운 최고 점수입니다!")
 
         print("=" * 45)
+
+        record = {
+            "datetime": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "total_questions": total,
+            "correct_count": correct_count,
+            "score": score
+        }
+        self.history.append(record)
+
+    def show_history(self):
+        """지금까지의 모든 게임 기록을 출력"""
+        if not self.history:
+            print("\n📜 아직 게임 기록이 없습니다.\n")
+            return
+
+        print(f"\n📜 게임 기록 (총 {len(self.history)}회)\n")
+        print("-" * 45)
+        for i, record in enumerate(self.history, start=1):
+            print(f"[{i}] {record['datetime']} | "
+                  f"{record['total_questions']}문제 중 {record['correct_count']}문제 정답 | "
+                  f"{record['score']}점")
+        print("-" * 45)
 
     def _get_question_count(self, max_count):
         """풀고 싶은 문제 수를 입력받는다. (1 ~ 전체 개수 범위, 예외처리 포함)"""
