@@ -10,19 +10,23 @@ class QuizGame:
         self.best_score = best_score  # 아직 안 풀었으면 None
 
     def play(self):
-        """등록된 모든 퀴즈를 순서대로 풀고 점수를 계산"""
+        """등록된 퀴즈 중 사용자가 선택한 문제 수만큼 풀고 점수를 계산"""
         if not self.quizzes:
             print("\n⚠ 등록된 퀴즈가 없습니다. 먼저 퀴즈를 추가해주세요.\n")
             return
 
-        total = len(self.quizzes)
+        total_available = len(self.quizzes)
+        num_to_play = self._get_question_count(total_available)
+
+        shuffled_quizzes = random.sample(self.quizzes, total_available)
+        selected_quizzes = shuffled_quizzes[:num_to_play]
+
+        total = len(selected_quizzes)
         correct_count = 0
 
         print(f"\n📝 퀴즈를 시작합니다! (총 {total}문제)\n")
 
-        shuffled_quizzes = random.sample(self.quizzes, total)
-
-        for idx, quiz in enumerate(shuffled_quizzes, start=1):
+        for idx, quiz in enumerate(selected_quizzes, start=1):
             print("-" * 40)
             print(f"[문제 {idx}]")
             quiz.display()
@@ -46,6 +50,26 @@ class QuizGame:
             print("🎉 새로운 최고 점수입니다!")
 
         print("=" * 45)
+
+    def _get_question_count(self, max_count):
+        """풀고 싶은 문제 수를 입력받는다. (1 ~ 전체 개수 범위, 예외처리 포함)"""
+        while True:
+            raw = input(f"몇 문제를 푸시겠습니까? (1-{max_count}): ").strip()
+
+            if raw == "":
+                print("⚠ 입력이 비어 있습니다. 숫자를 입력하세요.")
+                continue
+
+            if not raw.isdigit():
+                print("⚠ 숫자를 입력해야 합니다. 다시 입력하세요.")
+                continue
+
+            num = int(raw)
+            if not (1 <= num <= max_count):
+                print(f"⚠ 1부터 {max_count} 사이의 숫자를 입력하세요.")
+                continue
+
+            return num
 
     def _get_answer_input(self):
         """정답 번호(1~4) 입력을 검증하며 받는다.
