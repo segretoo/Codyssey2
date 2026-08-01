@@ -1,49 +1,79 @@
 {
-    "quizzes": [
-        {
-            "question": "Python의 창시자는?",
-            "choices": ["Guido van Rossum", "Linus Torvalds", "Bjarne Stroustrup", "James Gosling"],
-            "answer": 1,
-            "hint": "네덜란드 출신 프로그래머입니다."
-        },
-        {
-            "question": "HTML에서 하이퍼링크를 만드는 태그는?",
-            "choices": ["<link>", "<href>", "<a>", "<url>"],
-            "answer": 3,
-            "hint": "영어로 anchor(닻)의 줄임말입니다."
-        },
-        {
-            "question": "Git에서 변경 이력을 저장하는 명령어는?",
-            "choices": ["git save", "git commit", "git record", "git log"],
-            "answer": 2,
-            "hint": null
-        },
-        {
-            "question": "웹사이트의 디자인(스타일)을 담당하는 언어는?",
-            "choices": ["HTML", "JSON", "CSS", "SQL"],
-            "answer": 3,
-            "hint": null
-        },
-        {
-            "question": "다음 중 파이썬의 기본 자료형이 아닌 것은?",
-            "choices": ["int", "list", "dict", "array"],
-            "answer": 4,
-            "hint": null
-        },
-        {
-            "question": "JavaScript 코드를 실행할 수 있는 대표적인 웹 브라우저 엔진은?",
-            "choices": ["V8", "MySQL", "Photoshop", "Excel"],
-            "answer": 1,
-            "hint": null
-        }
-    ],
-    "best_score": 75,
-    "history": [
-        {
-            "datetime": "2026-08-01 13:42:04",
-            "total_questions": 2,
-            "correct_count": 1.5,
-            "score": 75
-        }
-    ]
+  "quizzes": [
+    {
+      "question": "Python의 창시자는?",
+      "choices": [
+        "Guido van Rossum",
+        "Linus Torvalds",
+        "Bjarne Stroustrup",
+        "James Gosling"
+      ],
+      "answer": 1,
+      "hint": "네덜란드 출신 프로그래머입니다."
+    },
+    {
+      "question": "HTML에서 하이퍼링크를 만드는 태그는?",
+      "choices": [
+        "<link>",
+        "<href>",
+        "<a>",
+        "<url>"
+      ],
+      "answer": 3,
+      "hint": "영어로 anchor(닻)의 줄임말입니다."
+    },
+    {
+      "question": "Git에서 변경 이력을 저장하는 명령어는?",
+      "choices": [
+        "git save",
+        "git commit",
+        "git record",
+        "git log"
+      ],
+      "answer": 2,
+      "hint": null
+    },
+    {
+      "question": "웹사이트의 디자인(스타일)을 담당하는 언어는?",
+      "choices": [
+        "HTML",
+        "JSON",
+        "CSS",
+        "SQL"
+      ],
+      "answer": 3,
+      "hint": null
+    },
+    {
+      "question": "다음 중 파이썬의 기본 자료형이 아닌 것은?",
+      "choices": [
+        "int",
+        "list",
+        "dict",
+        "array"
+      ],
+      "answer": 4,
+      "hint": null
+    },
+    {
+      "question": "JavaScript 코드를 실행할 수 있는 대표적인 웹 브라우저 엔진은?",
+      "choices": [
+        "V8",
+        "MySQL",
+        "Photoshop",
+        "Excel"
+      ],
+      "answer": 1,
+      "hint": null
+    }
+  ],
+  "best_score": 75,
+  "history": [
+    {
+      "datetime": "2026-08-01 13:42:04",
+      "total_questions": 2,
+      "correct_count": 1.5,
+      "score": 75
+    }
+  ]
 }
