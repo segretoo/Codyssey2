@@ -22,14 +22,34 @@ class QuizGame:
         self.history = history if history is not None else []
 
     def _read_line(self, prompt):
-        """입력을 받되, b/q 입력 시 네비게이션 예외를 발생시킨다."""
-        raw = input(prompt)
-        lowered = raw.strip().lower()
-        if lowered == "b":
-            raise BackToMenu()
-        if lowered == "q":
-            raise QuitProgram()
-        return raw
+        """입력을 받되, b/q/? 를 공통으로 처리한다.
+        - b: 이전(메뉴)으로 돌아가기
+        - q: 프로그램 종료
+        - ?: 도움말 표시 후 같은 질문 다시 하기"""
+        while True:
+            raw = input(prompt)
+            lowered = raw.strip().lower()
+
+            if lowered == "?":
+                print("\nℹ 도움말: 입력창에서 b=이전 메뉴로 돌아가기, "
+                      "q=프로그램 저장 후 종료 가 가능합니다.\n")
+                continue
+
+            if lowered == "b":
+                raise BackToMenu()
+            if lowered == "q":
+                raise QuitProgram()
+
+            return raw
+
+    def _get_nonempty_text(self, prompt):
+        """빈 문자열이 아닌 텍스트를 입력받는다."""
+        while True:
+            text = self._read_line(prompt).strip()
+            if text == "":
+                print("⚠ 입력이 비어 있습니다. 다시 입력하세요.")
+                continue
+            return text
 
     def play(self):
         """등록된 퀴즈 중 사용자가 선택한 문제 수만큼 풀고 점수를 계산"""
@@ -138,13 +158,13 @@ class QuizGame:
 
     def add_quiz(self):
         """새로운 퀴즈를 입력받아 목록에 추가"""
-        print("\n📌 새로운 퀴즈를 추가합니다. (b=뒤로 q=종료)\n")
+        print("\n📌 새로운 퀴즈를 추가합니다. (b=뒤로 q=종료 ?=도움말)\n")
 
-        question = self._read_line("문제를 입력하세요 [b=뒤로 q=종료]: ")
+        question = self._get_nonempty_text("문제를 입력하세요 [b=뒤로 q=종료 ?=도움말]: ")
 
         choices = []
         for i in range(1, 5):
-            choice = self._read_line(f"선택지 {i} [b=뒤로 q=종료]: ")
+            choice = self._get_nonempty_text(f"선택지 {i} [b=뒤로 q=종료 ?=도움말]: ")
             choices.append(choice)
 
         answer = self._get_choice_answer()
