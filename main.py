@@ -11,34 +11,35 @@ def print_menu():
     print("3. 퀴즈 목록")
     print("4. 점수 확인")
     print("5. 퀴즈 삭제")
-    print("6. 게임 기록")
-    print("7. 종료")
+    print("6. 퀴즈 수정")
+    print("7. 게임 기록")
+    print("8. 종료")
     print("=" * 45)
 
 
 def get_menu_choice():
-    """1~7 사이의 숫자만 허용. q 입력 시 바로 종료(7)로 처리."""
+    """1~8 사이의 숫자만 허용. q 입력 시 바로 종료(8)로 처리."""
     while True:
         choice = input("선택: ").strip()
 
         if choice.lower() == "q":
-            return 7
+            return 8
 
         if choice.lower() == "b":
             print("⚠ 이미 메인 메뉴입니다.\n")
             continue
 
         if choice == "":
-            print("⚠ 입력이 비어 있습니다. 1-7 사이의 숫자를 입력하세요.\n")
+            print("⚠ 입력이 비어 있습니다. 1-8 사이의 숫자를 입력하세요.\n")
             continue
 
         if not choice.isdigit():
-            print("⚠ 잘못된 입력입니다. 1-7 사이의 숫자를 입력하세요.\n")
+            print("⚠ 잘못된 입력입니다. 1-8 사이의 숫자를 입력하세요.\n")
             continue
 
         num = int(choice)
-        if not (1 <= num <= 7):
-            print("⚠ 잘못된 입력입니다. 1-7 사이의 숫자를 입력하세요.\n")
+        if not (1 <= num <= 8):
+            print("⚠ 잘못된 입력입니다. 1-8 사이의 숫자를 입력하세요.\n")
             continue
 
         return num
@@ -68,8 +69,10 @@ def main():
                 elif choice == 5:
                     game.delete_quiz()
                 elif choice == 6:
-                    game.show_history()
+                    game.edit_quiz()
                 elif choice == 7:
+                    game.show_history()
+                elif choice == 8:
                     save_state(game.quizzes, game.best_score, game.history)
                     print("\n💾 저장 완료! 게임을 종료합니다. 안녕히 가세요 👋\n")
                     break
@@ -80,7 +83,7 @@ def main():
                 print("\n💾 저장 완료! 게임을 종료합니다. 안녕히 가세요 👋\n")
                 break
 
-            if choice != 7:
+            if choice != 8:
                 save_state(game.quizzes, game.best_score, game.history)
 
     except (KeyboardInterrupt, EOFError):

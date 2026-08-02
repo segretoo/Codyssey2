@@ -236,6 +236,44 @@ class QuizGame:
         removed = self.quizzes.pop(index - 1)
         print(f"\n🗑 삭제되었습니다: {removed.question}\n")
 
+    def edit_quiz(self):
+        """등록된 퀴즈 중 하나를 선택해서 전체 내용을 다시 입력받아 교체"""
+        if not self.quizzes:
+            print("\n⚠ 수정할 퀴즈가 없습니다.\n")
+            return
+
+        self.list_quizzes()
+
+        index = self._get_delete_index(len(self.quizzes))
+        target = self.quizzes[index - 1]
+
+        print(f"\n✏ '{target.question}' 문제를 수정합니다. "
+              f"(현재 값은 [ ] 안에 표시, 그대로 두려면 Enter)\n")
+
+        question = self._read_line(
+            f"문제 [{target.question}]: "
+        ).strip()
+        if question == "":
+            question = target.question
+
+        choices = []
+        for i in range(1, 5):
+            current = target.choices[i - 1]
+            new_choice = self._read_line(f"선택지 {i} [{current}]: ").strip()
+            choices.append(new_choice if new_choice != "" else current)
+
+        answer_raw = self._read_line(
+            f"정답 번호 (1-4) [{target.answer}]: "
+        ).strip()
+        answer = int(answer_raw) if answer_raw.isdigit() and 1 <= int(answer_raw) <= 4 else target.answer
+
+        hint_prompt = f"힌트 [{target.hint if target.hint else '없음'}]: "
+        hint_raw = self._read_line(hint_prompt).strip()
+        hint = hint_raw if hint_raw != "" else target.hint
+
+        self.quizzes[index - 1] = Quiz(question, choices, answer, hint=hint)
+        print("\n✅ 퀴즈가 수정되었습니다!\n")
+
     def _get_delete_index(self, max_count):
         """삭제할 퀴즈 번호를 입력받는다."""
         while True:
