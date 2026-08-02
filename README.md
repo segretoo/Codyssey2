@@ -1,5 +1,14 @@
 # 🎯 나만의 퀴즈 게임
 
+## 개발 환경
+
+- OS: Windows (Git Bash / MINGW64)
+- Python: 3.14.6
+- Git: 2.47.0.windows.2
+- Editor: VS Code 1.130.0
+
+![version](docs/screenshots/version.png)
+
 ## 프로젝트 개요
 
 Python 기본 문법과 객체지향(클래스), JSON을 이용한 데이터 저장을 학습하기 위해
@@ -140,10 +149,6 @@ quiz_game/
 
 ![input_validation](docs/screenshots/input_validation.png)
 
-### 개발 환경 버전 확인
-
-![version](docs/screenshots/version.png)
-
 ### Git 커밋 이력 (기능 단위 커밋, 브랜치 병합 포함)
 
 ![git_log](docs/screenshots/git_log.png)
@@ -257,13 +262,6 @@ pull로 그 변경사항이 정상적으로 반영되는 것까지 확인한 전
   입력하고 싶은 경우와 이론적으로 충돌할 수 있습니다. 정답 입력은 항상
   숫자로 제한되어 있어 실질적인 문제는 없지만, 더 엄격하게 하려면 `/b`,
   `/q`처럼 구분되는 문법을 쓰는 방법을 고려할 수 있습니다.
-
-## 개발 환경
-
-- OS: Windows (Git Bash / MINGW64)
-- Python: 3.14.6
-- Git: 2.47.0.windows.2
-- Editor: VS Code 1.130.0
 
 ## GitHub 저장소
 
