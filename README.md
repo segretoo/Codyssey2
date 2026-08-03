@@ -67,7 +67,7 @@ python main.py
 ## 파일 구조
 
 ```
-quiz_game/
+Codyssey2/
 ├── main.py            # 실행 진입점, 메뉴 루프, 예외(Ctrl+C/EOFError) 처리
 ├── quiz.py             # Quiz 클래스 (문제 1개의 데이터, 출력, 채점, 힌트 로직)
 ├── quiz_game.py        # QuizGame 클래스 (풀기/추가/수정/삭제/목록/점수/기록 로직, 입력 검증, 네비게이션)
