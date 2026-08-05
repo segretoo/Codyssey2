@@ -17,9 +17,13 @@ class QuizGame:
     """퀴즈 게임 전체를 관리하는 클래스"""
 
     def __init__(self, quizzes, best_score=None, history=None):
-        self.quizzes = quizzes
-        self.best_score = best_score
-        self.history = history if history is not None else []
+        self.quizzes = quizzes        # Quiz 객체 리스트
+        self.best_score = best_score  # 아직 안 풀었으면 None
+        self.history = history if history is not None else []  # 게임 기록 리스트
+
+    # ------------------------------------------------------------------
+    # 공통 입력 처리
+    # ------------------------------------------------------------------
 
     def _read_line(self, prompt):
         """입력을 받되, b/q/? 를 공통으로 처리한다.
@@ -50,6 +54,31 @@ class QuizGame:
                 print("⚠ 입력이 비어 있습니다. 다시 입력하세요.")
                 continue
             return text
+
+    def _get_number_in_range(self, prompt, min_val, max_val):
+        """min_val ~ max_val 범위의 숫자 입력을 검증하며 받는다.
+        공백/빈 입력/숫자 변환 실패/범위 초과를 모두 처리하는 공통 함수."""
+        while True:
+            raw = self._read_line(prompt).strip()
+
+            if raw == "":
+                print("⚠ 입력이 비어 있습니다. 숫자를 입력하세요.")
+                continue
+
+            if not raw.isdigit():
+                print("⚠ 숫자를 입력해야 합니다. 다시 입력하세요.")
+                continue
+
+            num = int(raw)
+            if not (min_val <= num <= max_val):
+                print(f"⚠ {min_val}부터 {max_val} 사이의 숫자를 입력하세요.")
+                continue
+
+            return num
+
+    # ------------------------------------------------------------------
+    # 퀴즈 풀기
+    # ------------------------------------------------------------------
 
     def play(self):
         """등록된 퀴즈 중 사용자가 선택한 문제 수만큼 풀고 점수를 계산"""
@@ -107,22 +136,10 @@ class QuizGame:
 
     def _get_question_count(self, max_count):
         """풀고 싶은 문제 수를 입력받는다."""
-        while True:
-            raw = self._read_line(
-                f"몇 문제를 푸시겠습니까? (1-{max_count}) [b=뒤로 q=종료]: "
-            ).strip()
-
-            if raw == "":
-                print("⚠ 입력이 비어 있습니다. 숫자를 입력하세요.")
-                continue
-            if not raw.isdigit():
-                print("⚠ 숫자를 입력해야 합니다. 다시 입력하세요.")
-                continue
-            num = int(raw)
-            if not (1 <= num <= max_count):
-                print(f"⚠ 1부터 {max_count} 사이의 숫자를 입력하세요.")
-                continue
-            return num
+        return self._get_number_in_range(
+            f"몇 문제를 푸시겠습니까? (1-{max_count}) [b=뒤로 q=종료]: ",
+            1, max_count
+        )
 
     def _get_answer_input(self, quiz):
         """정답 번호를 입력받는다. 힌트가 있으면 h로 확인 가능."""
@@ -156,6 +173,10 @@ class QuizGame:
 
             return num, hint_used
 
+    # ------------------------------------------------------------------
+    # 퀴즈 추가
+    # ------------------------------------------------------------------
+
     def add_quiz(self):
         """새로운 퀴즈를 입력받아 목록에 추가"""
         print("\n📌 새로운 퀴즈를 추가합니다. (b=뒤로 q=종료 ?=도움말)\n")
@@ -178,20 +199,14 @@ class QuizGame:
 
     def _get_choice_answer(self, max_count=4):
         """정답 번호(1~4) 입력을 검증하며 받는다."""
-        while True:
-            raw = self._read_line(f"정답 번호 (1-{max_count}) [b=뒤로 q=종료]: ").strip()
+        return self._get_number_in_range(
+            f"정답 번호 (1-{max_count}) [b=뒤로 q=종료]: ",
+            1, max_count
+        )
 
-            if raw == "":
-                print("⚠ 입력이 비어 있습니다. 정답 번호를 입력하세요.")
-                continue
-            if not raw.isdigit():
-                print("⚠ 숫자를 입력해야 합니다. 다시 입력하세요.")
-                continue
-            num = int(raw)
-            if not (1 <= num <= max_count):
-                print(f"⚠ 1부터 {max_count} 사이의 번호를 입력하세요.")
-                continue
-            return num
+    # ------------------------------------------------------------------
+    # 퀴즈 목록 / 점수 확인
+    # ------------------------------------------------------------------
 
     def list_quizzes(self):
         """등록된 모든 퀴즈의 문제 목록을 출력"""
@@ -213,6 +228,10 @@ class QuizGame:
         else:
             play_count = len(self.history)
             print(f"\n🏆 최고 점수: {self.best_score}점 (총 {play_count}회 플레이)\n")
+
+    # ------------------------------------------------------------------
+    # 퀴즈 삭제 / 수정
+    # ------------------------------------------------------------------
 
     def delete_quiz(self):
         """등록된 퀴즈 중 하나를 선택해서 삭제 (재확인 포함)"""
@@ -275,23 +294,15 @@ class QuizGame:
         print("\n✅ 퀴즈가 수정되었습니다!\n")
 
     def _get_delete_index(self, max_count):
-        """삭제할 퀴즈 번호를 입력받는다."""
-        while True:
-            raw = self._read_line(
-                f"삭제할 퀴즈 번호를 입력하세요 (1-{max_count}) [b=뒤로 q=종료]: "
-            ).strip()
+        """삭제(또는 수정)할 퀴즈 번호를 입력받는다."""
+        return self._get_number_in_range(
+            f"번호를 입력하세요 (1-{max_count}) [b=뒤로 q=종료]: ",
+            1, max_count
+        )
 
-            if raw == "":
-                print("⚠ 입력이 비어 있습니다. 숫자를 입력하세요.")
-                continue
-            if not raw.isdigit():
-                print("⚠ 숫자를 입력해야 합니다. 다시 입력하세요.")
-                continue
-            num = int(raw)
-            if not (1 <= num <= max_count):
-                print(f"⚠ 1부터 {max_count} 사이의 숫자를 입력하세요.")
-                continue
-            return num
+    # ------------------------------------------------------------------
+    # 게임 기록
+    # ------------------------------------------------------------------
 
     def show_history(self):
         """최근 게임 기록을 출력 (최근 5개까지만 표시)"""
