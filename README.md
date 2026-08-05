@@ -176,6 +176,45 @@ Codyssey2/
 
 ### Git 커밋 이력 (기능 단위 커밋, 브랜치 병합 포함)
 
+총 40개 이상의 커밋이 있으며, `Feat:`/`Fix:`/`Docs:`/`Refactor:` 접두어로
+작업 종류를 구분했습니다. `git log --oneline --graph --all` 실행 결과
+일부는 다음과 같습니다.
+
+```
+$ git log --oneline | wc -l
+40
+
+$ git log --oneline --graph --all
+* 2cb2f84 (HEAD -> main, origin/main) Docs: 커밋 단위/메시지 규칙 설명 README에 보완
+* 5430372 Refactor: 숫자 범위 입력 검증 로직을 공통 함수로 통합
+* f1bc312 Docs: 설계 노트와 학습 내용 정리를 불릿/표 형태로 가독성 개선
+* 1294131 Docs: README를 표 기반 요약과 자연스러운 서술 구조로 재구성
+* 1ed1e89 Feat: 게임 기록 화면에 최근 5개까지만 표시하도록 개선
+* b265c90 Update README.md
+* 1c4407e Docs: 개발 환경 섹션을 상단으로 이동하고 버전 스크린샷 통합
+* 0510bbb Docs: 퀴즈 수정 기능 및 최신 실행화면 README 최종 반영
+* bf419b6 Feat: 퀴즈 수정 기능 추가 (메뉴 재구성)
+* 74f565c Docs: 네비게이션/도움말/즉시저장 기능 및 한계점 README 최종 반영
+* 1c88111 git add
+* 897477e Feat: 도움말(?) 기능 및 퀴즈 추가 시 빈 입력 검증 추가
+* 5ddb2b2 Chore: 시연을 위해 게임 기록 및 최고점수 초기화
+* 4241dc9 Docs: 퀴즈 목록 및 clone/pull 실습 스크린샷 README에 최종 반영
+* 14976db Docs: clone/pull 실습 확인용 문구 추가
+* a95a533 Refactor: 퀴즈 추가 시 정답 번호 입력 검증을 공통 패턴으로 통일
+* 693061c Docs: 입력 예외처리/개발환경/git log 스크린샷 README에 추가
+* eddfbdb Docs: 보너스 기능 반영 및 실행 화면 레이아웃 개선
+* c1cebfc Docs: 보너스 기능 반영한 최신 실행 화면 및 git log 스크린샷 갱신
+* 185b961 Feat: 게임 기록 히스토리 저장 및 조회 기능 추가
+* 5328676 Feat: 퀴즈 삭제 기능 추가 (메뉴 재구성)
+* 175ce6a Feat: 퀴즈 힌트 기능 추가 (힌트 사용 시 점수 차감)
+... (이하 생략, 전체 40개 커밋 중 최근 21개)
+```
+
+`feature/이름` 형태의 브랜치들(예: `feature/hint`, `feature/delete-quiz`,
+`feature/edit-quiz`, `feature/score-history` 등)을 만들어 작업한 뒤
+`main`으로 병합했으며, 병합 시점의 `main`이 그 사이 변경되지 않아
+대부분 Fast-forward 방식으로 이력이 합쳐졌습니다.
+
 ![git_log](docs/screenshots/git_log.png)
 
 ### Git 저장소 복제(clone) 및 pull 실습
