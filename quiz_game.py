@@ -294,14 +294,16 @@ class QuizGame:
             return num
 
     def show_history(self):
-        """지금까지의 모든 게임 기록을 출력"""
+        """최근 게임 기록을 출력 (최근 5개까지만 표시)"""
         if not self.history:
             print("\n📜 아직 게임 기록이 없습니다.\n")
             return
 
-        print(f"\n📜 게임 기록 (총 {len(self.history)}회)\n")
+        recent = self.history[-5:]
+
+        print(f"\n📜 게임 기록 (최근 {len(recent)}개 표시 / 전체 {len(self.history)}회)\n")
         print("-" * 45)
-        for i, record in enumerate(self.history, start=1):
+        for i, record in enumerate(recent, start=1):
             print(f"[{i}] {record['datetime']} | "
                   f"{record['total_questions']}문제 중 {record['correct_count']}문제 정답 | "
                   f"{record['score']}점")
